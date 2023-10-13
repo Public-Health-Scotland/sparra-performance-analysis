@@ -55,8 +55,8 @@ plot_details=list(
   "fdrp_adjusted"     = list(lpos=c(1,0.7),   yrange_upper=c(0,1),    yrange_lower=c(-0.3,0.3)),
   "fnp"               = list(lpos=c(1,0),     yrange_upper=c(0,0.2),  yrange_lower=c(-0.1,0.1)),
   "fnrp"              = list(lpos=c(1,0),     yrange_upper=c(0,1),    yrange_lower=c(-0.2,0.2)),
-  "forp"              = list(lpos=c(0,1),     yrange_upper=c(0,0.15), yrange_lower=c(-0.15,0.15)),
-  "forp_adjusted"     = list(lpos=c(0,1),     yrange_upper=c(0,0.15), yrange_lower=c(-0.15,0.15)),
+  "forp"              = list(lpos=c(0.3,0.7), yrange_upper=c(0,0.15), yrange_lower=c(-0.15,0.15)),
+  "forp_adjusted"     = list(lpos=c(0.3,0.7), yrange_upper=c(0,0.15), yrange_lower=c(-0.15,0.15)),
   "fpp"               = list(lpos=c(1,0.7),   yrange_upper=c(0,1),    yrange_lower=c(-0.3,0.3)),
   "fprp"              = list(lpos=c(1,0.7),   yrange_upper=c(0,1),    yrange_lower=c(-0.5,0.5)),
   "irp"               = list(lpos=c(1,0),     yrange_upper=c(0,1),    yrange_lower=c(-0.3,0.3)),
@@ -433,7 +433,7 @@ cc=c("all",names(categories))
 
 # Calibration
 calnames=paste0("cal_v3_",gg,".pdf")
-for (i in 1:length(groupings)) {
+for (i in 1:length(calnames)) {
   file.copy(paste0(out_dir,calnames[i]),paste0("Figures/paper_figures/Calibration/",calnames[i]),overwrite=TRUE)
 }
 
