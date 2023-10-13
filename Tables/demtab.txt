@@ -1,0 +1,23 @@
+All & 4286341 & 0.454 & 43.3 (23.8) & 0.215 & 0.187 & 0.668 & 0.218 & 0.833 & 0.166 & 0.981 & 0.0186 & 0.0824 & 0.04 & 0.105 & 0.0901 & 0.0441 & 0.117  \\
+\hline
+Male & 1945620 & {\color{red} 1} & 42.7 (23.9) & 0.219 & 0.185 & 0.651 & {\color{red} 0.23} & 0.83 & 0.169 & 0.98 & 0.0191 & 0.0809 & 0.04 & 0.103 & 0.0907 & 0.0458 & 0.117  \\
+Female & 2340721 & {\color{blue} 0} & 43.7 (23.7) & 0.212 & 0.189 & 0.681 & 0.208 & 0.836 & 0.164 & 0.981 & 0.0182 & 0.0836 & 0.04 & 0.107 & 0.0895 & 0.0425 & 0.118  \\
+\hline
+Most dep. &  923242 & 0.462 & {\color{blue} 40.4 (23.2)} & {\color{red} 1} & {\color{blue} 0} & {\color{red} 0.703} & {\color{blue} 0.183} & {\color{red} 0.965} & {\color{blue} 0.0347} & 0.997 & {\color{blue} 0.00184} & {\color{red} 0.1} & {\color{red} 0.05} & {\color{red} 0.122} & {\color{red} 0.109} & {\color{red} 0.0583} & {\color{red} 0.132}  \\
+Least dep. &  802680 & 0.448 & 44.1 (24.1) & {\color{blue} 0} & {\color{red} 1} & 0.646 & {\color{red} 0.239} & {\color{red} 0.919} & {\color{blue} 0.0807} & 0.997 & {\color{blue} 0.00222} & {\color{blue} 0.0655} & {\color{blue} 0.03} & {\color{blue} 0.0852} & {\color{blue} 0.071} & {\color{blue} 0.0322} & {\color{blue} 0.0987}  \\
+Mid dep. & 2560419 & 0.453 & 44 (23.7) & {\color{blue} 0} & {\color{blue} 0} & 0.662 & 0.223 & {\color{blue} 0.759} & {\color{red} 0.24} & 0.969 & {\color{red} 0.0298} & 0.0813 & 0.04 & 0.103 & 0.0891 & 0.0438 & 0.116  \\
+\hline
+Over 65 &  883869 & 0.441 & {\color{red} 75.5 (7.22)} & {\color{blue} 0.171} & {\color{red} 0.203} & {\color{blue} 0.545} & {\color{blue} 0.139} & 0.803 & {\color{red} 0.197} & 0.976 & {\color{red} 0.0238} & {\color{red} 0.167} & {\color{red} 0.12} & {\color{red} 0.147} & {\color{red} 0.189} & {\color{red} 0.122} & {\color{red} 0.174}  \\
+Under 25 & 1100409 & 0.475 & {\color{blue} 12.1 (7.51)} & {\color{red} 0.238} & 0.189 & 0.697 & {\color{red} 0.249} & 0.85 & {\color{blue} 0.15} & 0.984 & {\color{blue} 0.0157} & {\color{blue} 0.0463} & {\color{blue} 0.03} & {\color{blue} 0.0571} & {\color{blue} 0.0548} & {\color{blue} 0.0326} & {\color{blue} 0.0592}  \\
+Other age & 2302063 & 0.449 & {\color{red} 45.8 (11.7)} & 0.222 & 0.181 & 0.701 & {\color{red} 0.233} & 0.837 & 0.162 & 0.981 & 0.018 & {\color{blue} 0.067} & 0.04 & {\color{blue} 0.0842} & {\color{blue} 0.0688} & {\color{blue} 0.0386} & {\color{blue} 0.0868}  \\
+\hline
+White eth. & 2861997 & 0.443 & 41.4 (22.6) & {\color{red} 0.227} & 0.181 & {\color{red} 1} & {\color{blue} 0} & 0.839 & 0.16 & 0.983 & {\color{blue} 0.0163} & {\color{blue} 0.0755} & 0.04 & {\color{blue} 0.0879} & {\color{blue} 0.0798} & 0.0462 & {\color{blue} 0.0903}  \\
+Nonwhite eth. &  933021 & {\color{red} 0.479} & {\color{blue} 39.3 (22.1)} & {\color{blue} 0.182} & {\color{red} 0.206} & {\color{blue} 0} & {\color{red} 1} & 0.816 & {\color{red} 0.183} & 0.974 & {\color{red} 0.0248} & {\color{blue} 0.0454} & {\color{blue} 0.03} & {\color{blue} 0.0441} & {\color{blue} 0.0489} & {\color{blue} 0.0308} & {\color{blue} 0.0451}  \\
+Missing eth. &  491323 & 0.471 & {\color{red} 61.8 (24.7)} & 0.213 & 0.187 & {\color{blue} 0} & {\color{blue} 0} & 0.832 & 0.168 & 0.979 & {\color{red} 0.0206} & {\color{red} 0.192} & {\color{red} 0.13} & {\color{red} 0.181} & {\color{red} 0.228} & {\color{red} 0.148} & {\color{red} 0.215}  \\
+\hline
+Urban & 3570998 & 0.452 & 42.7 (23.7) & {\color{red} 0.249} & {\color{red} 0.207} & 0.672 & 0.213 & {\color{red} 1} & {\color{blue} 0} & 0.994 & {\color{blue} 0.0058} & 0.0837 & 0.04 & 0.107 & 0.0914 & 0.0446 & 0.119  \\
+Rural &  712506 & 0.462 & {\color{red} 46 (23.9)} & {\color{blue} 0.0449} & {\color{blue} 0.0909} & 0.644 & {\color{red} 0.24} & {\color{blue} 0} & {\color{red} 1} & {\color{blue} 0.917} & {\color{red} 0.0829} & {\color{blue} 0.0759} & 0.04 & {\color{blue} 0.0951} & {\color{blue} 0.0836} & {\color{blue} 0.0416} & {\color{blue} 0.108}  \\
+Post. missing &    2837 & {\color{red} 0.509} & 42 (22.2) & 0.225 & {\color{blue} 0.124} & {\color{blue} 0.622} & {\color{red} 0.271} & {\color{blue} 0} & {\color{blue} 0} & {\color{blue} 0} & {\color{blue} 0} & {\color{blue} 0.0739} & 0.04 & 0.1 & {\color{blue} 0.0855} & 0.0419 & 0.113  \\
+\hline
+Mainland & 4203724 & 0.454 & 43.2 (23.7) & 0.219 & 0.19 & 0.669 & 0.216 & 0.845 & {\color{blue} 0.155} & 1 & {\color{blue} 0} & 0.0824 & 0.04 & 0.105 & 0.09 & 0.0441 & 0.117  \\
+Island &   79780 & 0.467 & {\color{red} 47.3 (24)} & {\color{blue} 0.0213} & {\color{blue} 0.0223} & {\color{blue} 0.583} & {\color{red} 0.29} & {\color{blue} 0.26} & {\color{red} 0.74} & {\color{blue} 0} & {\color{red} 1} & 0.0831 & 0.04 & 0.103 & 0.0911 & 0.0446 & 0.118  \\
