@@ -67,8 +67,8 @@ plot_details=list(
 )
 
 
-# Lower Yrange should be dependent on data
-for (i in 1:length(plot_details)) plot_details[[i]]$yrange_lower=NULL
+# Lower Yrange should be dependent on data?
+# for (i in 1:length(plot_details)) plot_details[[i]]$yrange_lower=NULL
 
 # Group fairness metrics
 metrics=c("fpp", "fdrp", "fprp", "rp", "irp", "fnp", "forp", "fnrp")
@@ -382,7 +382,7 @@ for (version in c(3,4)) {
       pdf(xname,width=3,height=3.5)
       names_group=paste0("v",version,"_",subgroup,"_q",1:20)
       decomp=decomposition_matrix[names_group,]
-      for_breakdown(decomp,group = subgroup,threshold = cutoff,ylimit=c(-0.055,0.055))
+      for_breakdown(decomp,group = subgroup,threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
       dev.off()
       
     }
@@ -407,15 +407,12 @@ for (version in c(3,4)) {
   dev.off()
   
   
-  
-  
-  
   obj_name=paste0("for_breakdown_v",version,"_all")
   xname=paste0(out_dir,obj_name,".pdf")
   pdf(xname,width=3,height=3.5)
   names_group=paste0("v",version,"_all_q",1:20)
   decomp=decomposition_matrix[names_group,]
-  for_breakdown(decomp,group = subgroup,threshold = cutoff,ylimit=c(-0.055,0.055))
+  for_breakdown(decomp,group = subgroup,threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
   dev.off()
   
 }
