@@ -29,7 +29,7 @@ library(SPARRAfairness)
 
 # Options
 save_plots=TRUE # Save plots to PDF
-highlight_value=0.1 # Highlight this cutoff
+highlight_value=0.1 # Highlight this cutoff (none)
 
 
 
