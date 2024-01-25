@@ -29,7 +29,7 @@ library(SPARRAfairness)
 
 # Options
 save_plots=TRUE # Save plots to PDF
-highlight_value=0.1 # Highlight this cutoff (none)
+highlight_value=NULL #0.1 # Highlight this cutoff (none)
 
 
 
@@ -413,7 +413,7 @@ for (version in c(3,4)) {
   pdf(xname,width=3,height=3.5)
   names_group=paste0("v",version,"_all_q",1:20)
   decomp=decomposition_matrix[names_group,]
-  for_breakdown(decomp,group = subgroup,threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
+  for_breakdown(decomp,group = "All",threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
   dev.off()
   
 }
