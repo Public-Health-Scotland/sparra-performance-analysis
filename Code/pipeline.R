@@ -355,6 +355,16 @@ print("Completed counterfactual plots")
 cutoff=10/100 # 10% risk score threshold
 
 for (version in c(3,4)) {
+  
+  # Decomposition in all samples
+  obj_name=paste0("for_breakdown_v",version,"_all")
+  xname=paste0(out_dir,obj_name,".pdf")
+  pdf(xname,width=3,height=3.5)
+  names_group=paste0("v",version,"_all_q",1:20)
+  decomp=decomposition_matrix[names_group,]
+  for_breakdown(decomp,group = "All",threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
+  dev.off()
+  
   for (g in 1:length(groupings)) {
     
     obj_name=paste0("forp_decomposition_v",version,"_",names(groupings)[[g]])
