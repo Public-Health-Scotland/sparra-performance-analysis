@@ -68,7 +68,7 @@ plot_details=list(
 
 
 # Lower Yrange should be dependent on data?
-# for (i in 1:length(plot_details)) plot_details[[i]]$yrange_lower=NULL
+for (i in 1:length(plot_details)) plot_details[[i]]$yrange_lower=NULL
 
 # Group fairness metrics
 metrics=c("fpp", "fdrp", "fprp", "rp", "irp", "fnp", "forp", "fnrp")
