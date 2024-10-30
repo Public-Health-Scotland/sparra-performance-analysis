@@ -556,6 +556,72 @@ suppressWarnings(make4(dnames,inds=c(23,24,22,21),fname="panel_decomp_B.pdf"))
 suppressWarnings(make4(dnames,inds=c(25,26),fname="panel_decomp_C.pdf"))
 
 
+## Other multipart figures
+## DP comparisons
+lx1=c("Figures/paper_figures/Demographic_parity/dp_v3_Ethnicity_all.RDS",
+      "Figures/paper_figures/Demographic_parity/dp_v3_SIMD_all.RDS",
+      "Figures/paper_figures/Counterfactual/counterfactual_dp_v3_Ethnicity.RDS",
+      "Figures/paper_figures/Counterfactual/counterfactual_dp_v3_SIMD.RDS"
+)
+tt=theme(plot.margin = margin(0.5,0.1,0.7,0.1, "cm"))
+dx=list(); for (i in 1:length(lx1)) dx[[i]]=readRDS(lx1[i]) + tt
+nx=c("A. Eth. groups, CDFs","B. SIMD groups, CDFs",
+     "C. Eth. groups, counterf. CDFs",
+     "D. SIMD groups, counterf. CDFs")  
+pdf("Figures/paper_figures/Panels/panel_dp_main.pdf",width=6,height=7)
+suppressWarnings(gxA<-ggarrange(dx[[1]],dx[[2]],dx[[3]],dx[[4]],
+                                labels=nx,
+                                hjust=0,vjust=0,
+                                nrow=2,ncol=2,
+                                font.label = list(size = 12, color = "black")) + 
+                   theme(plot.margin = margin(1,0.5,0.5,0.5, "cm")))
+print(gxA)
+dev.off()
+
+
+## FOR comparisons
+lx1=c("Figures/paper_figures/FORP/forp_v3_Urban_rural_all.RDS",
+      "Figures/paper_figures/FORP/forp_v3_Mainland_island_all.RDS",
+      "Figures/paper_figures/FORP/forp_adjusted_v3_Urban_rural.RDS",
+      "Figures/paper_figures/FORP/forp_adjusted_v3_Mainland_island.RDS")
+tt=theme(plot.margin = margin(0.5,0.1,0.7,0.1, "cm"))
+dx=list(); for (i in 1:length(lx1)) dx[[i]]=readRDS(lx1[i]) + tt
+nx=c("A. FOR, Urb./Rur.","B. FOR, Main./Isl.",
+     "C. FOR, Urb./Rur., adjusted",
+     "D. FOR, Main./Isl., adjusted")  
+pdf("Figures/paper_figures/Panels/panel_for_main.pdf",width=6,height=7)
+suppressWarnings(gxA<-ggarrange(dx[[1]],dx[[2]],dx[[3]],dx[[4]],
+                                labels=nx,
+                                hjust=0,vjust=0,
+                                nrow=2,ncol=2,
+                                font.label = list(size = 12, color = "black")) + 
+                   theme(plot.margin = margin(1,0.5,0.5,0.5, "cm")))
+print(gxA)
+dev.off()
+
+## FOR breakdown
+lx1=c("Figures/paper_figures/Decomposition/for_breakdown_v3_Male.RDS",
+      "Figures/paper_figures/Decomposition/for_breakdown_v3_Female.RDS")
+tt=theme(plot.margin = margin(0.5,0.1,0.7,0.1, "cm"))
+dx=list(); for (i in 1:length(lx1)) dx[[i]]=readRDS(lx1[i]) + tt
+nx=c("FOR breakdown for males","FOR breakdown for females")
+for (i in 1:length(dx)) dx[[i]]=dx[[i]] + labs(title="")
+pdf("Figures/paper_figures/Panels/panel_breakdown_main.pdf",width=6,height=3.5)
+suppressWarnings(gxA<-ggarrange(dx[[1]],dx[[2]],
+              labels=nx,
+              hjust=0,vjust=0,
+              nrow=1,ncol=2,
+              font.label = list(size = 12, color = "black")) + 
+  theme(plot.margin = margin(1,0.5,0.5,0.5, "cm")))
+suppressWarnings(print(gxA))
+dev.off()
+
+
+##**********************************************#
+## Assemble figure panels                    ####
+##**********************************************#
+
+
 ## Assemble panels
 fp="Figures/paper_figures/Panels/"
 file.copy("Figures/paper_figures/Calibration/panel_cal.pdf",fp)
@@ -569,6 +635,8 @@ file.copy("Figures/paper_figures/ROC/panel_roc.pdf",fp)
 file.copy("Figures/paper_figures/Decomposition/panel_decomp_A.pdf",fp)
 file.copy("Figures/paper_figures/Decomposition/panel_decomp_B.pdf",fp)
 file.copy("Figures/paper_figures/Decomposition/panel_decomp_C.pdf",fp)
+file.copy("Figures/paper_figures/Decomposition/for_breakdown_v3_all.pdf",paste0(fp,"panel_decomp_all.pdf"))
+
 
 
 ##**********************************************#
