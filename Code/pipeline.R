@@ -25,7 +25,10 @@ out_dir="./Figures/All/" # Main directory to which to write figure data
 table_dir="./Tables/"
 
 # Packages
-library(SPARRAfairness)
+library(SPARRAfairness) # Note: this package should be the version on GitHub 
+# (https://github.com/jamesliley/SPARRAfairness). This may not be equivalent
+# to the CRAN version if I have not updated it recently.
+library(ggpubr)
 
 # Options
 save_plots=TRUE # Save plots to PDF
@@ -112,7 +115,7 @@ for (version in c(3,4)) {
              paste0(names(groupings[[g]])[1],": ",aucA," (",seA,")"),
              paste0(names(groupings[[g]])[2],": ",aucB," (",seB,")"))
       xcol=phs_colours(c("phs-blue","phs-magenta","phs-purple"))
-      roc_2panel(list(roc_overall,rocA,rocB),
+      plot_obj=roc_2panel(list(roc_overall,rocA,rocB),
                  labels = labs,
                  col=xcol,
                  highlight=highlight_value,
@@ -120,6 +123,7 @@ for (version in c(3,4)) {
                  #lpos=plot_details[[input$pname]]$lpos,
                  yrange_lower=plot_details[[pname]]$yrange_lower,
                  legend_title="AUROC (SE)")
+      saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
     })
     dev.off()
 
@@ -141,7 +145,7 @@ for (version in c(3,4)) {
              paste0(names(groupings[[g]])[1],": ",aucA," (",seA,")"),
              paste0(names(groupings[[g]])[2],": ",aucB," (",seB,")"))
       xcol=phs_colours(c("phs-blue","phs-magenta","phs-purple"))
-      prc_2panel(list(prc_overall,prcA,prcB),
+      plot_obj=prc_2panel(list(prc_overall,prcA,prcB),
                  labels = labs,
                  col=xcol,
                  highlight=highlight_value,
@@ -149,6 +153,7 @@ for (version in c(3,4)) {
                  #lpos=plot_details[[input$pname]]$lpos,
                  yrange_lower=plot_details[[pname]]$yrange_lower,
                  legend_title="AUPRC (SE)")
+      saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
     })
     dev.off()
 
@@ -164,7 +169,7 @@ for (version in c(3,4)) {
       pname="cal"
       labs=c("Overall",names(groupings[[g]]))
       xcol=phs_colours(c("phs-blue","phs-magenta","phs-purple"))
-      cal_2panel(list(cal_overall,calA,calB),
+      plot_obj=cal_2panel(list(cal_overall,calA,calB),
                  labels = labs,
                  col=xcol,
                  highlight=highlight_value,
@@ -172,7 +177,7 @@ for (version in c(3,4)) {
                  #lpos=plot_details[[input$pname]]$lpos,
                  yrange_lower=plot_details[[pname]]$yrange_lower,
                  legend_title="Group")
-
+      saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
     })
     dev.off()
   }
@@ -213,7 +218,7 @@ for (g in 1:length(groupings)) {
       xname=paste0(out_dir,obj_name,".pdf")
       pdf(xname,width=3,height=3.5)
 
-      groupmetric_2panel(obj_list,
+      plot_obj=groupmetric_2panel(obj_list,
                          labels=names(groupings[[g]]),
                          col=phs_colours(c("phs-blue","phs-magenta")),
                          ci_col=phs_colours(c("phs-blue","phs-magenta")),
@@ -222,6 +227,7 @@ for (g in 1:length(groupings)) {
                          yrange_lower = plot_details[[pname]]$yrange_lower,
                          highlight=highlight_value,
                          logscale=TRUE)
+      saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
 
       dev.off()
 
@@ -241,7 +247,7 @@ for (g in 1:length(groupings)) {
 
         pdf(xname,width=3,height=3.5)
 
-        groupmetric_2panel(obj_list,
+        plot_obj=groupmetric_2panel(obj_list,
                            labels= names(groupings[[g]]),
                            col=phs_colours(c("phs-blue","phs-magenta")),
                            ci_col=phs_colours(c("phs-blue","phs-magenta")),
@@ -249,6 +255,7 @@ for (g in 1:length(groupings)) {
                            lpos = plot_details[[pname]]$lpos,
                            yrange_lower = plot_details[[pname]]$yrange_lower,
                            highlight=highlight_value)
+        saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
 
          dev.off()
 
@@ -292,7 +299,7 @@ for (version in c(3,4)) {
       )
 
       pdf(xname,width=3,height=3.5)
-      groupmetric_2panel(obj_list,
+      plot_obj=groupmetric_2panel(obj_list,
                          labels=names(groupings[[g]]),
                          col=phs_colours(c("phs-blue","phs-magenta")),
                          ci_col=phs_colours(c("phs-blue","phs-magenta")),
@@ -300,6 +307,7 @@ for (version in c(3,4)) {
                          lpos = plot_details[[pname]]$lpos,
                          yrange_lower = plot_details[[pname]]$yrange_lower,
                          highlight=highlight_value)
+      saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
       dev.off()
 
     }
@@ -329,7 +337,7 @@ for (g in 1:length(groupings)) {
 
     pdf(xname,width=3,height=3.5)
 
-    groupmetric_2panel(obj_list,
+    plot_obj=groupmetric_2panel(obj_list,
                        labels=names(groupings[[g]]),
                        col=phs_colours(c("phs-blue","phs-magenta")),
                        ci_col=phs_colours(c("phs-blue","phs-magenta")),
@@ -338,6 +346,7 @@ for (g in 1:length(groupings)) {
                        yrange_lower = plot_details[[pname]]$yrange_lower,
                        highlight=highlight_value,
                        logscale=TRUE)
+    saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
 
     dev.off()
 
@@ -369,10 +378,11 @@ for (version in c(3,4)) {
     
     
     pdf(xname,width=6,height=6)
-    plot_decomp(decomp1,
+    plot_obj=plot_decomp(decomp1,
                 decomp2,
                 threshold=cutoff,
                 labels=names(groupings[[g]]))
+    saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
     dev.off()
     
     
@@ -383,7 +393,8 @@ for (version in c(3,4)) {
       pdf(xname,width=3,height=3.5)
       names_group=paste0("v",version,"_",subgroup,"_q",1:20)
       decomp=decomposition_matrix[names_group,]
-      for_breakdown(decomp,group = subgroup,threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
+      plot_obj=for_breakdown(decomp,group = subgroup,threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
+      saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
       dev.off()
       
     }
@@ -401,10 +412,11 @@ for (version in c(3,4)) {
   
   
   pdf(xname,width=6,height=6)
-  plot_decomp(decomp1,
+  plot_obj=plot_decomp(decomp1,
               decomp2,
               threshold=cutoff,
               labels=names(groupings[[g]]))
+  saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
   dev.off()
   
   
@@ -413,7 +425,8 @@ for (version in c(3,4)) {
   pdf(xname,width=3,height=3.5)
   names_group=paste0("v",version,"_all_q",1:20)
   decomp=decomposition_matrix[names_group,]
-  for_breakdown(decomp,group = "All",threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
+  plot_obj=for_breakdown(decomp,group = "All",threshold = cutoff,ylimit=c(-0.065,0.065),ldiff=0.003)
+  saveRDS(plot_obj,file=gsub("pdf","RDS",xname))
   dev.off()
   
 }
@@ -426,61 +439,136 @@ print("Completed decomposition")
 ## Organise figures for manuscript           ####
 ##**********************************************#
 
+# Auxiliary functions to put panels together
+make6=function(lx, fname) {
+  lxs=sort(grep("RDS",lx,val=T)); lxs=grep("v3_all",lxs,value=TRUE,invert=TRUE)
+  tt=theme(plot.margin = margin(0.5,0.1,0.7,0.1, "cm"))
+  px=list(); for (i in 1:6) px[[i]]=readRDS(paste0(out_dir,lxs[i])) + tt
+  pdf(paste0("Figures/paper_figures/",fname),width=9,height=7)
+  ggx=ggarrange(px[[1]],px[[4]],px[[5]],px[[2]],px[[6]],px[[3]], # alphabetical order
+                labels=c("A. Age groups","B. Sex groups","C. SIMD groups",
+                         "D. Ethnicity groups","E. Urban/rural groups","F. Mainland/island groups"),
+                nrow=2,ncol=3,
+                hjust=0,vjust=0,
+                font.label = list(size = 12, color = "black")) + 
+    theme(plot.margin = margin(1,0.5,0.5,0.5, "cm"))
+  print(ggx)
+  dev.off()
+  invisible(ggx)
+}
+make4=function(lx,inds,fname) {
+  lx1=paste0(out_dir,lx)
+  lx1=lx1[inds]
+  
+  tt=theme(plot.margin = margin(0.5,0.1,0.7,0.1, "cm"))
+  dx=list(); for (i in 1:length(lx1)) dx[[i]]=readRDS(lx1[i]) + tt
+  
+  if (length(inds)==4) nx=paste0(c("A. ","B. ","C. ","D. "),unlist(lapply(dx,function(x) x$labels$title)))
+  if (length(inds)==2) nx=paste0(c("A. ","B. "),unlist(lapply(dx,function(x) x$labels$title)))
+  for (i in 1:length(dx)) dx[[i]]=dx[[i]] + labs(title="")
+  pdf(paste0("Figures/paper_figures/Decomposition/",fname),width=6,height=3.5*length(inds)/2)
+  if (length(inds)==4) gxA=ggarrange(dx[[1]],dx[[2]],dx[[3]],dx[[4]],
+                                     labels=nx,
+                                     hjust=0,vjust=0,
+                                     nrow=2,ncol=2,
+                                     font.label = list(size = 12, color = "black")) + 
+    theme(plot.margin = margin(1,0.5,0.5,0.5, "cm"))
+  if (length(inds)==2) gxA=ggarrange(dx[[1]],dx[[2]],
+                                     labels=nx,
+                                     hjust=0,vjust=0,
+                                     nrow=1,ncol=2,
+                                     font.label = list(size = 12, color = "black")) + 
+    theme(plot.margin = margin(1,0.5,0.5,0.5, "cm"))
+  
+  print(gxA)
+  dev.off()
+}
+
+
+
 gg=c("all",names(groupings))
 cc=c("all",names(categories))
 
 # Calibration
-calnames=paste0("cal_v3_",gg,".pdf")
+calnames=c(paste0("cal_v3_",gg,".pdf"),paste0("cal_v3_",gg,".RDS"))
 for (i in 1:length(calnames)) {
   file.copy(paste0(out_dir,calnames[i]),paste0("Figures/paper_figures/Calibration/",calnames[i]),overwrite=TRUE)
 }
+make6(calnames,"Calibration/panel_cal.pdf")
+
 
 # Counterfactuals
-cfnames=paste0("counterfactual_dp_v3_",gg,".pdf")
+cfnames=c(paste0("counterfactual_dp_v3_",gg,".pdf"), paste0("counterfactual_dp_v3_",gg,".RDS"))
 for (i in 1:length(cfnames)) {
   file.copy(paste0(out_dir,cfnames[i]),paste0("Figures/paper_figures/Counterfactual/",cfnames[i]),overwrite=TRUE)
 }
+make6(cfnames,"Counterfactual/panel_counterfactual.pdf")
 
-# Decomposition
-dnames=c(
-  paste0("for_breakdown_v3_",cc,".pdf"),
-  paste0("forp_decomposition_v3_",gg,".pdf"))
-for (i in 1:length(dnames)) {
-  file.copy(paste0(out_dir,dnames[i]),paste0("Figures/paper_figures/Decomposition/",dnames[i]),overwrite=TRUE)
-}
 
 # DP
 dpnames=c(
-  paste0("dp_v3_",gg,"_all.pdf"),
-  "dp_v3_Age_Female.pdf",
-  "dp_v3_SIMD_Rural.pdf")
+  paste0("dp_v3_",gg,"_all.pdf"),paste0("dp_v3_",gg,"_all.RDS"),
+  "dp_v3_Age_Female.pdf","dp_v3_Age_Female.RDS",
+  "dp_v3_SIMD_Rural.pdf","dp_v3_SIMD_Rural.RDS")
 for (i in 1:length(dpnames)) {
   file.copy(paste0(out_dir,dpnames[i]),paste0("Figures/paper_figures/Demographic_parity/",dpnames[i]),overwrite=TRUE)
 }
+make6(dpnames[1:14],"Demographic_parity/panel_dp.pdf")
+
 
 # FDRP
 fdnames=c(
-  paste0("fdrp_v3_",gg,"_all.pdf"),
-  paste0("fdrp_adjusted_v3_",gg,".pdf"))
+  paste0("fdrp_v3_",gg,"_all.pdf"),paste0("fdrp_v3_",gg,"_all.RDS"),
+  paste0("fdrp_adjusted_v3_",gg,".pdf"),paste0("fdrp_adjusted_v3_",gg,".RDS"))
 for (i in 1:length(fdnames)) {
   file.copy(paste0(out_dir,fdnames[i]),paste0("Figures/paper_figures/FDRP/",fdnames[i]),overwrite=TRUE)
 }
+make6(fdnames[1:14],"FDRP/panel_fdrp.pdf")
+make6(fdnames[15:28],"FDRP/panel_fdrp_adjusted.pdf")
+
 
 # FORP
 fonames=c(
-  paste0("forp_v3_",gg,"_all.pdf"),
-  paste0("forp_adjusted_v3_",gg,".pdf"))
+  paste0("forp_v3_",gg,"_all.pdf"),paste0("forp_v3_",gg,"_all.RDS"),
+  paste0("forp_adjusted_v3_",gg,".pdf"),paste0("forp_adjusted_v3_",gg,".RDS"))
 for (i in 1:length(fonames)) {
   file.copy(paste0(out_dir,fonames[i]),paste0("Figures/paper_figures/FORP/",fonames[i]),overwrite=TRUE)
 }
+make6(fonames[1:14],"FORP/panel_forp.pdf")
+make6(fonames[15:28],"FORP/panel_forp_adjusted.pdf")
 
 # ROC
-rocnames=paste0("roc_v3_",gg,".pdf")
+rocnames=c(paste0("roc_v3_",gg,".pdf"),paste0("roc_v3_",gg,".RDS"))
 for (i in 1:length(rocnames)) {
   file.copy(paste0(out_dir,rocnames[i]),paste0("Figures/paper_figures/ROC/",rocnames[i]),overwrite=TRUE)
 }
+make6(rocnames,"ROC/panel_roc.pdf")
+
+# Decomposition
+dnames=c(
+  c(paste0("for_breakdown_v3_",cc,".pdf"),paste0("for_breakdown_v3_",cc,".RDS")),
+  c(paste0("forp_decomposition_v3_",gg,".pdf"), paste0("forp_decomposition_v3_",gg,".RDS")))
+for (i in 1:length(dnames)) {
+  file.copy(paste0(out_dir,dnames[i]),paste0("Figures/paper_figures/Decomposition/",dnames[i]),overwrite=TRUE)
+}
+suppressWarnings(make4(dnames,inds=c(19,20,28,27),fname="panel_decomp_A.pdf"))
+suppressWarnings(make4(dnames,inds=c(23,24,22,21),fname="panel_decomp_B.pdf"))
+suppressWarnings(make4(dnames,inds=c(25,26),fname="panel_decomp_C.pdf"))
 
 
+## Assemble panels
+fp="Figures/paper_figures/Panels/"
+file.copy("Figures/paper_figures/Calibration/panel_cal.pdf",fp)
+file.copy("Figures/paper_figures/Counterfactual/panel_counterfactual.pdf",fp)
+file.copy("Figures/paper_figures/Demographic_parity/panel_dp.pdf",fp)
+file.copy("Figures/paper_figures/FDRP/panel_fdrp.pdf",fp)
+file.copy("Figures/paper_figures/FDRP/panel_fdrp_adjusted.pdf",fp)
+file.copy("Figures/paper_figures/FORP/panel_forp.pdf",fp)
+file.copy("Figures/paper_figures/FORP/panel_forp_adjusted.pdf",fp)
+file.copy("Figures/paper_figures/ROC/panel_roc.pdf",fp)
+file.copy("Figures/paper_figures/Decomposition/panel_decomp_A.pdf",fp)
+file.copy("Figures/paper_figures/Decomposition/panel_decomp_B.pdf",fp)
+file.copy("Figures/paper_figures/Decomposition/panel_decomp_C.pdf",fp)
 
 
 ##**********************************************#
