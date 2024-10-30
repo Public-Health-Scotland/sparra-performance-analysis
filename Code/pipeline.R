@@ -604,7 +604,7 @@ lx1=c("Figures/paper_figures/Decomposition/for_breakdown_v3_Male.RDS",
       "Figures/paper_figures/Decomposition/for_breakdown_v3_Female.RDS")
 tt=theme(plot.margin = margin(0.5,0.1,0.7,0.1, "cm"))
 dx=list(); for (i in 1:length(lx1)) dx[[i]]=readRDS(lx1[i]) + tt
-nx=c("FOR breakdown for males","FOR breakdown for females")
+nx=c("A. FOR breakdown for males","B. FOR breakdown for females")
 for (i in 1:length(dx)) dx[[i]]=dx[[i]] + labs(title="")
 pdf("Figures/paper_figures/Panels/panel_breakdown_main.pdf",width=6,height=3.5)
 suppressWarnings(gxA<-ggarrange(dx[[1]],dx[[2]],
